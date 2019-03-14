@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+       Home
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goLogin()" [hidden]="authstate">
+       <ion-icon slot="start" name="log-in"></ion-icon>  
+          Signin
+      </ion-button>
+      <ion-button [routerDirection]="'forward'" routerLink="/cart">
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+        <ion-badge color="warning" style="position:relative; bottom:10px; right:1px" *ngIf="quantity">{{quantity}}</ion-badge>
+      </ion-button>
+      <ion-button (click)="popover($event)">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" style="height:40vh;--bullet-background: white;">
+    <ion-slide class="slide-one">
+      <ion-label color="--ion-color-tertiary-tint">
+          <h1>
+              Quality Food At your footstep
+            </h1>
+            <p>
+              Just Order Now
+            </p>
+      </ion-label>
+      
+    </ion-slide>
+   
+        <ion-slide class="slide-two">
+            <ion-label color="secondary-contrast">
+                <h1>
+                    We deliver Healthy and Fresh food
+                  </h1>
+                  <p>
+                    Grab it now
+                  </p>
+            </ion-label>
+          </ion-slide>
+          <ion-slide class="slide-three">
+              <ion-label color="ion-color-primary-contrast">
+                  <h1>
+                      So Tasty that you cannot but enjoy it
+                    </h1>
+                    <p>
+                      Give a try
+                    </p>
+              </ion-label>
+            </ion-slide> 
+  </ion-slides>
+  <ion-grid>
+    <ion-row *ngIf="items; else skeleton">
+      <ion-col size-md="4" size-sm="12" size-lg="3" size="12" *ngFor="let item of items">
+          <ion-card>
+              <img [src]="item.img" style="height: 25vh"/>
+              <ion-card-content>
+                <ion-card-title>
+                   {{item.name}}
+                  </ion-card-title>
+                <p>
+                  Price: <b>BDT  <i>{{item.price}}</i></b>
+                </p>
+              
+              
+
+              </ion-card-content>
+           
+              <ion-item>
+                <ion-button fill="clear" size="small" style="color:rgba(0, 128, 0, 0.651);font-weight: 700;" slot="start">
+                  <ion-icon name="star-half" slot="start"></ion-icon>
+                  <ion-label>
+                    Favorite
+                  </ion-label>
+                </ion-button>
+                <ion-button fill="clear" size="small" [routerDirection]="'forward'" [routerLink]="['/order', item.id]" style="color:rgba(0, 128, 0, 0.651);font-weight: 700" slot="end">
+                  <ion-icon name="share-alt" slot="start"></ion-icon>
+                  <ion-label>
+                    Order
+                  </ion-label>
+                </ion-button>
+              </ion-item>
+              
+            </ion-card>
+      </ion-col>
+     
+    </ion-row>
+
+    <ng-template #skeleton>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-xl="4" *ngFor="let skeleton of [0,1,2,3,4,5,6,7,8,9,10]">
+          <ion-card class="skeleton-animation">
+            <ion-card-content>
+              <img src="" alt="skeleton pic" width="85%">
+              <ion-skeleton-text width="60%"></ion-skeleton-text>
+              <ion-skeleton-text width="80%"></ion-skeleton-text>
+              <ion-skeleton-text width="100%"></ion-skeleton-text>
+              <ion-skeleton-text width="100%"></ion-skeleton-text>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" routerLink="/search" routerDirection="forward">
+      <ion-icon name="search"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+

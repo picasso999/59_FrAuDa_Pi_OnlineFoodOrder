@@ -1,0 +1,59 @@
+@-webkit-keyframes slideInLeft {
+    from {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .slideInLeft {
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+  }
+
+ 
+
+ .slide-one {
+
+background-image: url('../../../assets/images/login.jpg');
+background-size: contain;
+background-position: center;
+;
+color:yellow;
+ }
+
+ .slide-two {
+ 
+  background-image: url('../../../assets/images/fast__food.jpeg');
+background-size: contain;
+background-position: center;
+color: white;
+ }
+
+ .slide-three {
+  background-image: url('../../../assets/images/fast___food.jpeg');
+background-size: cover;
+background-position: center;
+color: white;
+background-repeat: no-repeat;
+ }
+
+ 
